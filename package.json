@@ -1,0 +1,43 @@
+{
+  "name": "grunt-http-server",
+  "description": "Run http-server with grunt",
+  "version": "0.0.1",
+  "homepage": "http://divhide.com",
+  "author": {
+    "name": "Oscar Brito",
+    "url": "http://divhide.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aetheon/grunt-http-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aetheon/grunt-http-server/issues"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "http-server": ">=0.5",
+    "lodash": ">=1.3"
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "keywords": [
+    "grunt",
+    "http-server",
+    "http",
+    "server",
+    "static"
+  ],
+  "contributors": [
+    {
+      "name": "Oscar Brito",
+      "url": "http://divhide.com"
+    }
+  ]
+  
+}
