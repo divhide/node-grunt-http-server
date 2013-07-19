@@ -1,5 +1,5 @@
 # grunt-http-server 
-> use an http server with grunt....
+> serve static files from a directory
 
 > npm install grunt-http-server -l
 
