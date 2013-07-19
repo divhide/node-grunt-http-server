@@ -1,5 +1,6 @@
 # grunt-http-server 
 > use an http server with grunt....
+> npm install grunt-http-server -l
 
 
 ## Getting Started
@@ -30,6 +31,7 @@ And run:
 ```js
 
 grunt http-server:dev
+
 
 ```
 
