@@ -31,8 +31,8 @@ And run:
 
 ```js
 
-grunt http-server:dev
 
+grunt http-server:dev
 
 ```
 
