@@ -12,7 +12,8 @@ Task:
 		cache: <sec>,
 		showDir : true,
 		autoIndex: true,
-		defaultExt: "html"
+		defaultExt: "html",
+		runInBAckground: true|false
 	}
 
  */
@@ -36,10 +37,11 @@ module.exports = function(grunt) {
         		cache: 20,
 				showDir : true,
 				autoIndex: true,
-				defaultExt: "html"
+				defaultExt: "html",
+				runInBAckground: false
         	};
 
-        	var options = _.extend({}, this.data, defaults);
+        	var options = _.extend({}, defaults, this.data);
 
 			var server = Server.createServer(options);
 
@@ -54,6 +56,10 @@ module.exports = function(grunt) {
 			    done();
 			    process.exit();
 			});
+
+			// async support - run in background
+			if(options.runInBAckground)
+				done();
 
         });
 

@@ -15,13 +15,19 @@ Just add this task to Gruntfile:
 'http-server': 
 	'dev' {
 		{
+			// server root directory
 			root: <path>,
+			
 			port: 8282,
 	        host: "127.0.0.1",
+			
 			cache: <sec>,
 			showDir : true,
 			autoIndex: true,
-			defaultExt: "html"
+			defaultExt: "html",
+
+			//wait or not for the process to finish
+			runInBAckground: true|false	
 		}
 	}
 
