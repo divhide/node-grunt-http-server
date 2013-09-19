@@ -1,7 +1,7 @@
 "use strict";
 
 /*
- * Run n http server on grunt!
+ * Run a http server on grunt!
 
 Task:
 	'http-server': {
