@@ -1,47 +1,44 @@
 "use strict";
 
 /*
- * run an http server on grunt!
+ * Run a http server on grunt!
 
 Task:
-
 	'http-server': {
 		root: <path>,
 		port: 8282,
-        host: "127.0.0.1",
+		host: "127.0.0.1",
 		cache: <sec>,
 		showDir : true,
 		autoIndex: true,
 		defaultExt: "html",
 		runInBAckground: true|false
 	}
-
- */
+*/
 
 module.exports = function(grunt) {
 
 	var Server = require('http-server'),
 		_ = require('lodash');
-    
-    grunt.registerMultiTask(
-       'http-server',
-        function () {
 
-        	// grunt async task
-        	var done = this.async();
+	grunt.registerMultiTask(
+		'http-server',
+		function () {
+			// grunt async task
+			var done = this.async();
 
-        	var defaults = {
-        		root: process.cwd(),
-        		port: 8282,
-        		host: "127.0.0.1",
-        		cache: 20,
+			var defaults = {
+				root: process.cwd(),
+				port: 8282,
+				host: "127.0.0.1",
+				cache: 20,
 				showDir : true,
 				autoIndex: true,
 				defaultExt: "html",
 				runInBAckground: false
-        	};
+			};
 
-        	var options = _.extend({}, defaults, this.data);
+			var options = _.extend({}, defaults, this.data);
 
 			var server = Server.createServer(options);
 
@@ -51,17 +48,15 @@ module.exports = function(grunt) {
 			});
 
 			process.on('SIGINT', function () {
-			    console.log('http-server stopped');
-			    server.close();
-			    done();
-			    process.exit();
+				console.log('http-server stopped');
+				server.close();
+				done();
+				process.exit();
 			});
 
 			// async support - run in background
 			if(options.runInBAckground)
 				done();
-
-        });
-
-
+		}
+	);
 }
