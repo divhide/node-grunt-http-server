@@ -8,60 +8,56 @@ Task:
 	'http-server': {
 		root: <path>,
 		port: 8282,
-        host: "127.0.0.1",
+		host: "127.0.0.1",
 		cache: <sec>,
 		showDir : true,
 		autoIndex: true,
 		defaultExt: "html",
-		runInBAckground: true|false
+		runInBackground: true|false
 	}
 
  */
 
 module.exports = function(grunt) {
-
 	var Server = require('http-server'),
-		_ = require('lodash');
-    
-    grunt.registerMultiTask(
-       'http-server',
-        function () {
+			_ = require('lodash');
 
-        	// grunt async task
-        	var done = this.async();
+	grunt.registerMultiTask(
+		'http-server',
+		function () {
 
-        	var defaults = {
-        		root: process.cwd(),
-        		port: 8282,
-        		host: "127.0.0.1",
-        		cache: 20,
-				showDir : true,
-				autoIndex: true,
-				defaultExt: "html",
-				runInBAckground: false
-        	};
+		// grunt async task
+		var done = this.async();
 
-        	var options = _.extend({}, defaults, this.data);
+		var defaults = {
+			root: process.cwd(),
+			port: 8282,
+			host: "127.0.0.1",
+			cache: 20,
+			showDir : true,
+			autoIndex: true,
+			defaultExt: "html",
+			runInBackground: false
+		};
 
-			var server = Server.createServer(options);
+		var options = _.extend({}, defaults, this.data);
 
-			server.listen(options.port, options.host, function() {
-				console.log("Server running on ", options.host + ":" + options.port);
-				console.log('Hit CTRL-C to stop the server');
-			});
+		var server = Server.createServer(options);
 
-			process.on('SIGINT', function () {
-			    console.log('http-server stopped');
-			    server.close();
-			    done();
-			    process.exit();
-			});
+		server.listen(options.port, options.host, function() {
+			console.log("Server running on ", options.host + ":" + options.port);
+			console.log('Hit CTRL-C to stop the server');
+		});
 
-			// async support - run in background
-			if(options.runInBAckground)
-				done();
+		process.on('SIGINT', function () {
+			console.log('http-server stopped');
+			server.close();
+			done();
+			process.exit();
+		});
 
-        });
-
-
+		// async support - run in background
+		if(options.runInBackground)
+			done();
+		});
 }
