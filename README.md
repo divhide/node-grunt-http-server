@@ -14,9 +14,8 @@ Just add this task to Gruntfile:
 
 grunt.initConfig({
 
-	'http-server':
-		'dev' {
-			{
+	'http-server': {
+		'dev': {
 				// the server root directory
 				root: <path>,
 
