@@ -1,7 +1,7 @@
 {
   "name": "grunt-http-server",
-  "description": "Run http-server with grunt",
-  "version": "0.0.4",
+  "description": "Integration of http-server to grunt",
+  "version": "0.0.5",
   "homepage": "http://divhide.com",
   "author": {
     "name": "Oscar Brito",
@@ -22,6 +22,8 @@
     "lodash": ">=1.3"
   },
   "devDependencies": {
+    "grunt": "*",
+    "grunt-cli": "*"
   },
   "peerDependencies": {
     "grunt": "~0.4.0"

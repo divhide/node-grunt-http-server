@@ -42,8 +42,7 @@ grunt.initConfig({
 			autoIndex: true,
 			defaultExt: "html",
 
-			// wait or not for the process to finish
-			// this is useful to keep the server running
+			// run in parallel with other tasks
 			runInBackground: true|false
 			
 		}
