@@ -41,6 +41,7 @@ module.exports = function(grunt) {
 		};
 
 		var options = _.extend({}, defaults, this.data);
+		options.port = typeof options.port === 'function'  ? options.port(): options.port;
 
 		var server = Server.createServer(options);
 
