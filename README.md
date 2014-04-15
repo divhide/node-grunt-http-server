@@ -71,3 +71,4 @@ Now your static files are available in _http://127.0.0.1:8282/_.
 ## More information
 http://blog.divhide.com/2013/07/grunt-http-server-npm-js-file-server-on.html
 
+[Oscar Brito](http://divhide.com)
