@@ -25,24 +25,29 @@ Just add this task to Gruntfile:
 grunt.initConfig({
 
 	'http-server': {
+	
 		'dev': {
-				// the server root directory
-				root: <path>,
+		
+			// the server root directory
+			root: <path>,
 
-				port: 8282,
-				// port: function() { return 8282; }
+			port: 8282,
+			// port: function() { return 8282; }
 				
-				host: "127.0.0.1",
+			host: "127.0.0.1",
 
-				cache: <sec>,
-				showDir : true,
-				autoIndex: true,
-				defaultExt: "html",
+			cache: <sec>,
+			showDir : true,
+			autoIndex: true,
+			defaultExt: "html",
 
-				//wait or not for the process to finish
-				runInBackground: true|false
-			}
+			// wait or not for the process to finish
+			// this is useful to keep the server running
+			runInBackground: true|false
+			
 		}
+		
+	}
 });
 
 grunt.loadNpmTasks('grunt-http-server');
@@ -63,6 +68,6 @@ Now your static files are available in _http://127.0.0.1:8282/_ with nice genera
 easily browse content.
 
 
-Blog Post:
+## More information
 http://blog.divhide.com/2013/07/grunt-http-server-npm-js-file-server-on.html
 
