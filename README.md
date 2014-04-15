@@ -1,5 +1,5 @@
 # grunt-http-server
-> Static files server
+> Provides static files server integration to Grunt
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=NYVPSL7GBYD6A&lc=US&item_name=Oscar%20Brito&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
@@ -21,6 +21,7 @@ If you need to serve static files in your grunt directory you can add tasks with
 Just add this task to Gruntfile:
 
 ```js
+
 
 grunt.initConfig({
 
@@ -64,8 +65,7 @@ grunt http-server:dev
 
 ```
 
-Now your static files are available in _http://127.0.0.1:8282/_ with nice generated pages to
-easily browse content.
+Now your static files are available in _http://127.0.0.1:8282/_. 
 
 
 ## More information
