@@ -9,6 +9,7 @@
 
 ```js
 
+
 npm install grunt-http-server
 
 ```
@@ -29,6 +30,8 @@ grunt.initConfig({
 				root: <path>,
 
 				port: 8282,
+				// port: function() { return 8282; }
+				
 				host: "127.0.0.1",
 
 				cache: <sec>,
