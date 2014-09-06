@@ -12,7 +12,7 @@ Task:
 		cache: <sec>,
 		showDir : true,
 		autoIndex: true,
-		defaultExt: "html",
+		ext: "html",
 		runInBackground: true|false
 	}
 
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 			cache: 20,
 			showDir : true,
 			autoIndex: true,
-			defaultExt: "html",
+			ext: "html",
 			runInBackground: false
 		};
 

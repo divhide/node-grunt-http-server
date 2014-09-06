@@ -40,7 +40,7 @@ grunt.initConfig({
 			cache: <sec>,
 			showDir : true,
 			autoIndex: true,
-			defaultExt: "html",
+			ext: "html",
 
 			// run in parallel with other tasks
 			runInBackground: true|false
