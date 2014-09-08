@@ -18,7 +18,7 @@
     "node": ">=0.8.0"
   },
   "dependencies": {
-    "http-server": "0.6.0",
+    "http-server": "0.6.1",
     "lodash": ">=1.3"
   },
   "devDependencies": {
@@ -41,5 +41,5 @@
       "url": "http://divhide.com"
     }
   ]
-  
+
 }
