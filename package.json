@@ -1,7 +1,7 @@
 {
   "name": "grunt-http-server",
   "description": "Integration of http-server to grunt",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "homepage": "http://divhide.com",
   "author": {
     "name": "Oscar Brito",
