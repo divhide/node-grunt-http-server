@@ -40,7 +40,9 @@ grunt.initConfig({
 			cache: <sec>,
 			showDir : true,
 			autoIndex: true,
-			defaultExt: "html",
+			
+			// ext: default extenstion - serve html files without '.html'
+			ext: "html",  
 
 			// run in parallel with other tasks
 			runInBackground: true|false
