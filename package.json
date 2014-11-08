@@ -1,12 +1,13 @@
 {
   "name": "grunt-http-server",
   "description": "Integration of http-server to grunt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "http://divhide.com",
   "author": {
     "name": "Oscar Brito",
     "url": "http://divhide.com"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/aetheon/grunt-http-server.git"

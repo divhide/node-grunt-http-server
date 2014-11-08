@@ -2,3 +2,4 @@
 .DS_Store
 # Node
 node_modules/
+grunt-http-server*.tgz
