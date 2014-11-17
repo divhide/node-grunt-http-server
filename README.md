@@ -65,9 +65,11 @@ And run:
 
 grunt http-server:dev
 
+
 ```
 
 Now your static files are available in _http://127.0.0.1:8282/_.
 
 
-[Oscar Brito](http://divhide.com)
+[Oscar Brito](http://blog.divhide.com)
+
