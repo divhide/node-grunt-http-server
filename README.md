@@ -2,6 +2,7 @@
 > Provides static files server integration to Grunt
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=NYVPSL7GBYD6A&lc=US&item_name=Oscar%20Brito&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+[![Dependency Status](https://gemnasium.com/aetheon/grunt-http-server.svg)](https://gemnasium.com/aetheon/grunt-http-server)
 
 
 [![Divhide](http://blog.divhide.com/assets/images/divhide_192px.png)](http://site.divhide.com/)
@@ -68,8 +69,5 @@ grunt http-server:dev
 
 Now your static files are available in _http://127.0.0.1:8282/_.
 
-
-## More information
-http://blog.divhide.com/2013/07/grunt-http-server-npm-js-file-server-on.html
 
 [Oscar Brito](http://divhide.com)
