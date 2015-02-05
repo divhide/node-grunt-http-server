@@ -33,7 +33,8 @@ grunt.initConfig({
 			// the server root directory
 			root: <path>,
 
-			// e.g.
+			// the server port
+			// can also be written as a function, e.g.
 			// port: function() { return 8282; }
 			port: 8282,
 			
