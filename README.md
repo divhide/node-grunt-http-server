@@ -33,10 +33,16 @@ grunt.initConfig({
 			// the server root directory
 			root: <path>,
 
-			port: 8282,
+			// e.g.
 			// port: function() { return 8282; }
+			port: 8282,
+			
 
-			host: "127.0.0.1",
+			// the host ip address
+			// If specified to, for example, "127.0.0.1" the server will 
+			// only be available on that ip.
+			// Specify "0.0.0.0" to be available everywhere
+			host: "0.0.0.0",
 
 			cache: <sec>,
 			showDir : true,

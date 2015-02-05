@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 
         'root': {
             root            : "",
+            host            : "127.0.0.1",
             port            : function(){ return 8585; }
         }
 
