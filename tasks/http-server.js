@@ -14,8 +14,8 @@ Task:
 		autoIndex: true,
 		ext: "html",
 		runInBackground: true|false,
-    	cors: true,
-    	logFn: requestLogger
+		cors: true,
+		logFn: requestLogger
 	}
 
  */
@@ -26,11 +26,11 @@ module.exports = function(grunt) {
 
 	var requestLogger = function(req, res, error) {
 		var date = (new Date).toUTCString();
-	    if (error) {
-	    	console.log('[%s] "%s %s" Error (%s): "%s"', date, req.method.red, req.url.red, error.status.toString().red, error.message.red);
-	    } else {
-	    	console.log('[%s] "%s %s" "%s"', date, req.method.cyan, req.url.cyan, req.headers['user-agent']);
-	    }
+		if (error) {
+			console.log('[%s] "%s %s" Error (%s): "%s"', date, req.method.red, req.url.red, error.status.toString().red, error.message.red);
+		} else {
+			console.log('[%s] "%s %s" "%s"', date, req.method.cyan, req.url.cyan, req.headers['user-agent']);
+		}
 	};
 
 	grunt.registerMultiTask(
@@ -49,8 +49,8 @@ module.exports = function(grunt) {
 			autoIndex: true,
 			ext: "html",
 			runInBackground: false,
-      		cors: false,
-      		logFn: requestLogger 
+			cors: false,
+			logFn: requestLogger 
 		};
 
 		var options = _.extend({}, defaults, this.data);
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
 
 		var server = Server.createServer(options);
 
-		server.listen(options.port, options.host, function(req, res) {
+		server.listen(options.port, options.host, function() {
 			console.log("Server running on ", options.host + ":" + options.port);
 			console.log('Hit CTRL-C to stop the server');
 		});
