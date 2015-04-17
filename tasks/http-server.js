@@ -37,7 +37,8 @@ module.exports = function(grunt) {
 			showDir : true,
 			autoIndex: true,
 			ext: "html",
-			runInBackground: false
+			runInBackground: false,
+      cors: false
 		};
 
 		var options = _.extend({}, defaults, this.data);
