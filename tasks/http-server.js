@@ -13,7 +13,9 @@ Task:
 		showDir : true,
 		autoIndex: true,
 		ext: "html",
-		runInBackground: true|false
+		runInBackground: true|false,
+		cors: true,
+		logFn: requestLogger
 	}
 
  */
@@ -21,6 +23,15 @@ Task:
 module.exports = function(grunt) {
 	var Server = require('http-server'),
 			_ = require('lodash');
+
+	var requestLogger = function(req, res, error) {
+		var date = (new Date).toUTCString();
+		if (error) {
+			console.log('[%s] "%s %s" Error (%s): "%s"', date, req.method.red, req.url.red, error.status.toString().red, error.message.red);
+		} else {
+			console.log('[%s] "%s %s" "%s"', date, req.method.cyan, req.url.cyan, req.headers['user-agent']);
+		}
+	};
 
 	grunt.registerMultiTask(
 		'http-server',
@@ -37,7 +48,9 @@ module.exports = function(grunt) {
 			showDir : true,
 			autoIndex: true,
 			ext: "html",
-			runInBackground: false
+			runInBackground: false,
+			cors: false,
+			logFn: requestLogger 
 		};
 
 		var options = _.extend({}, defaults, this.data);
@@ -62,3 +75,4 @@ module.exports = function(grunt) {
 			done();
 		});
 }
+
