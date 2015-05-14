@@ -60,7 +60,7 @@ module.exports = function(grunt) {
 
 		server.listen(options.port, options.host, function() {
 			console.log("Server running on ", options.host + ":" + options.port);
-			console.log("Applciation running on ", options.appUrl);
+			if (options.appUrl) console.log("Applciation running on ", options.appUrl);
 			console.log('Hit CTRL-C to stop the server');
 		});
 
