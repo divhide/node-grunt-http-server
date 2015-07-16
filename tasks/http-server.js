@@ -50,11 +50,22 @@ module.exports = function(grunt) {
 			ext: "html",
 			runInBackground: false,
 			cors: false,
-			logFn: requestLogger 
+			logFn: requestLogger,
+			ssl: false,
+			cert: "cert.pem",
+			key : "key.pem"
 		};
 
 		var options = _.extend({}, defaults, this.data);
-		options.port = typeof options.port === 'function'  ? options.port(): options.port;
+		options.port = typeof options.port === 'function' ? options.port() : options.port;
+		
+		if (options.ssl)
+		{
+			options.https = {
+		      cert: options.cert,
+		      key:  options.key
+		    };
+		}
 
 		var server = Server.createServer(options);
 
