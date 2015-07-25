@@ -3,6 +3,8 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
+    'bump': require("./.grunt-tasks/bump"),
+
     'http-server': {
 
         'root': {
@@ -15,11 +17,14 @@ module.exports = function(grunt) {
 
   });
 
+  // auto load tasks
+  require('load-grunt-tasks')(grunt);
+
   // load libs
   grunt.loadTasks('./tasks/');
-  
+
   grunt.registerTask(
-    'default', 
+    'default',
     [
         'http-server'
     ]);

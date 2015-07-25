@@ -1,7 +1,7 @@
 {
   "name": "grunt-http-server",
   "description": "Grunt static http server task ",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "homepage": "http://divhide.com",
   "author": {
     "name": "Oscar Brito",
@@ -19,12 +19,14 @@
     "node": ">=0.8.0"
   },
   "dependencies": {
-    "http-server": "0.8.0",
-    "lodash": ">=1.3"
+    "http-server": "=0.8.0",
+    "lodash": "=3.10.X"
   },
   "devDependencies": {
     "grunt": "*",
-    "grunt-cli": "*"
+    "grunt-cli": "*",
+    "grunt-bump": "0.0.16",
+    "load-grunt-tasks": "3.0.0"
   },
   "peerDependencies": {
     "grunt": "~0.4.5"

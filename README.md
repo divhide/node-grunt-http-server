@@ -16,7 +16,7 @@ Usage examples:
 * Host static JSON responses for your tests
 * ...
 
-After run the grunt task (e.g. ```grunt http-server:dev```) you can open 
+After run the grunt task (e.g. ```grunt http-server:dev```) you can open
 ```http://127.0.0.1:8282/``` on your browser.
 
 ## Install
@@ -44,10 +44,9 @@ grunt.initConfig({
 			// can also be written as a function, e.g.
 			// port: function() { return 8282; }
 			port: 8282,
-			
 
 			// the host ip address
-			// If specified to, for example, "127.0.0.1" the server will 
+			// If specified to, for example, "127.0.0.1" the server will
 			// only be available on that ip.
 			// Specify "0.0.0.0" to be available everywhere
 			host: "0.0.0.0",
@@ -64,7 +63,14 @@ grunt.initConfig({
 
 			// specify a logger function. By default the requests are
 			// sent to stdout.
-			logFn: function(req, res, error) { }
+			logFn: function(req, res, error) { },
+
+			/// SSH is disabled by default
+			ssl: false,
+
+			/// path to the SSL certificate and key
+            cert: "cert.pem",
+            key : "key.pem"
 
 		}
 
