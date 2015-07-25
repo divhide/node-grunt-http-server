@@ -65,9 +65,8 @@ grunt.initConfig({
 			// sent to stdout.
 			logFn: function(req, res, error) { },
 
-			/// SSH is disabled by default
+			/// SSL is disabled by default
 			ssl: false,
-
 			/// path to the SSL certificate and key
             cert: "cert.pem",
             key : "key.pem"
