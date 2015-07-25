@@ -3,7 +3,7 @@
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=NYVPSL7GBYD6A&lc=US&item_name=Oscar%20Brito&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 [![Dependency Status](https://gemnasium.com/divhide/grunt-http-server.svg)](https://gemnasium.com/divhide/grunt-http-server)
 
-[![NPM Stats](https://nodei.co/npm/grunt-http-server.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/divhide)
+[![NPM Stats](https://nodei.co/npm/grunt-http-server.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/grunt-http-server)
 
 ---
 
@@ -14,6 +14,7 @@ Usage examples:
 * Host your jasmine tests from grunt
 * Test your single page application static html
 * Host static JSON responses for your tests
+* Test HTTPS support on your static web pages, tests, ...
 * ...
 
 After run the grunt task (e.g. ```grunt http-server:dev```) you can open
