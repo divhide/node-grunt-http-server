@@ -8,7 +8,7 @@ var bump = {
       commit: true,
       commitMessage: 'Release v%VERSION%',
       commitFiles: [ 'package.json','bower.json' ],
-      createTag: false,
+      createTag: true,
       tagName: 'v%VERSION%',
       tagMessage: 'Version %VERSION%',
       push: false,
