@@ -15,14 +15,21 @@ Task:
         ext: "html",
         runInBackground: true|false,
         cors: true,
-        logFn: requestLogger
+        logFn: requestLogger,
+
+        https: {
+            cert: "<file>",
+            key:  "<file>"
+        }
+
     }
 
  */
 
 module.exports = function(grunt) {
+
     var Server = require('http-server'),
-            _ = require('lodash');
+        _ = require('lodash');
 
     var requestLogger = function(req, res, error) {
         var date = (new Date).toUTCString();
@@ -51,26 +58,29 @@ module.exports = function(grunt) {
             runInBackground: false,
             cors: false,
             logFn: requestLogger,
-            ssl: false,
-            cert: "cert.pem",
-            key : "key.pem"
+            https: false
         };
 
         var options = _.extend({}, defaults, this.data);
         options.port = typeof options.port === 'function' ? options.port() : options.port;
 
-        if (options.ssl)
-        {
+        /// default module https support
+        if (options.https != null && options.https === true){
             options.https = {
-              cert: options.cert,
-              key:  options.key
+                cert: __dirname + "/../files/cert.pem",
+                key:  __dirname + "/../files/key.pem"
             };
         }
 
         var server = Server.createServer(options);
 
         server.listen(options.port, options.host, function() {
-            console.log("Server running on ", options.host + ":" + options.port);
+
+            var msgData = _.extend({}, options, {
+                protocol: !!options.https ? "https" : "http"
+            });
+            console.log(
+                _.template("Server running on <%= protocol %>://<%= host %>:<%= port %>/")(msgData));
             console.log('Hit CTRL-C to stop the server');
         });
 
