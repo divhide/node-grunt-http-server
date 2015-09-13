@@ -7,7 +7,8 @@
 
 ---
 
-Grunt task that provides an http server to server your static files.
+This grunt task provides you with an http server to serve your static files that you can
+hook in your grunt build.
 
 Usage examples:
 
@@ -65,6 +66,10 @@ grunt.initConfig({
             // specify a logger function. By default the requests are
             // sent to stdout.
             logFn: function(req, res, error) { },
+
+            // Proxies all requests which can't be resolved locally to the given url
+            // Note this this will disable 'showDir'
+            proxy: "http://someurl.com",
 
             /// Use 'https: true' for default module SSL configuration
             /// (default state is disabled)

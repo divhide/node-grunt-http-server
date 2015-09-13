@@ -12,6 +12,7 @@ module.exports = function(grunt) {
             host            : "127.0.0.1",
             port            : function(){ return 8585; },
             https           : false
+            //proxy           : "http://someurl.com"
         }
 
     }
