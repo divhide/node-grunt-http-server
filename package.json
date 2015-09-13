@@ -1,7 +1,7 @@
 {
   "name": "grunt-http-server",
   "description": "Grunt static http server task ",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "homepage": "http://divhide.com",
   "author": {
     "name": "Oscar Brito",
