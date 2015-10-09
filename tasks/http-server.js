@@ -3,27 +3,27 @@
 /*
  * run an http server on grunt!
 
-Task:
+ Task:
 
-    'http-server': {
-        root: <path>,
-        port: 8282,
-        host: "127.0.0.1",
-        cache: <sec>,
-        showDir : true,
-        autoIndex: true,
-        ext: "html",
-        runInBackground: true|false,
-        cors: true,
-        logFn: requestLogger,
-        openBrowser : false
+ 'http-server': {
+     root: <path>,
+     port: 8282,
+     host: "127.0.0.1",
+     cache: <sec>,
+     showDir : true,
+     autoIndex: true,
+     ext: "html",
+     runInBackground: true|false,
+     cors: true,
+     logFn: requestLogger,
+     openBrowser : false
 
-        https: {
-            cert: "<file>",
-            key:  "<file>"
-        }
+     https: {
+         cert: "<file>",
+         key:  "<file>"
+     }
 
-    }
+ }
 
  */
 
@@ -47,71 +47,74 @@ module.exports = function(grunt) {
         'http-server',
         function () {
 
-        // grunt async task
-        var done = this.async(),
-            protocol = "http:";
+            // grunt async task
+            var done = this.async()
 
-        var defaults = {
-            root: process.cwd(),
-            port: 8282,
-            host: "127.0.0.1",
-            cache: 20,
-            showDir : true,
-            autoIndex: true,
-            ext: "html",
-            runInBackground: false,
-            cors: false,
-            logFn: requestLogger,
-            https: false,
-            openBrowser : false
-        };
-
-        var options = _.extend({}, defaults, this.data);
-        options.port = typeof options.port === 'function' ? options.port() : options.port;
-
-        /// default module https support
-        if (options.https != null && options.https === true){
-            options.https = {
-                cert: __dirname + "/../files/cert.pem",
-                key:  __dirname + "/../files/key.pem"
+            var defaults = {
+                root: process.cwd(),
+                port: 8282,
+                host: "127.0.0.1",
+                cache: 20,
+                showDir : true,
+                autoIndex: true,
+                ext: "html",
+                runInBackground: false,
+                cors: false,
+                logFn: requestLogger,
+                https: false,
+                openBrowser : false
             };
+            
+            var options = _.extend({}, defaults, this.data);
+            options.port = typeof options.port === 'function' ? options.port() : options.port;
 
-            protocol : "https:";
-        }
+            //initialize url string with default https protocol, no need for port here since using 443
+            var url = "https://" + options.host;
 
-
-        var server = Server.createServer(options);
-
-        server.listen(options.port, options.host, function() {
-
-            var msgData = _.extend({}, options, {
-                protocol: !!options.https ? "https" : "http"
-            });
-            console.log(
-                _.template("Server running on <%= protocol %>://<%= host %>:<%= port %>/")(msgData));
-            console.log('Hit CTRL-C to stop the server');
-
-            if (options.openBrowser)
-            {
-                console.log("Opening browser")
-                opener(protocol + '//' + options.host + ':' + options.port,
-                    { command: options.openBrowser !== true ? options.openBrowser : null }
-                );
+            /// default module https support
+            if (options.https !== null && options.https === true){
+                console.log("Https configuration setting");
+                options.https = {
+                    cert: __dirname + "/../files/cert.pem",
+                    key:  __dirname + "/../files/key.pem"
+                };
             }
+            else if (options.https === null || options.https === false)
+                url = "http://" + options.host + ":" + options.port;  //no https config, use regular protcol/host/port string
+
+            var server = Server.createServer(options);
+
+            server.listen(options.port, options.host, function() {
+
+                var msgData = _.extend({}, options, {
+                    protocol: !!options.https ? "https" : "http"
+                });
+                console.log(
+                    _.template("Server running on <%= protocol %>://<%= host %>:<%= port %>/")(msgData));
+                console.log('Hit CTRL-C to stop the server');
+
+                if (options.openBrowser)
+                {
+                    console.log("Opening browser")
+
+                    opener(url, {
+                        command: options.openBrowser !== true ? options.openBrowser : null
+                    });
+                }
+            });
+
+            process.on('SIGINT', function () {
+                console.log('http-server stopped');
+                server.close();
+                done();
+                process.exit();
+            });
+
+            // async support - run in background
+            if(options.runInBackground)
+                done();
         });
 
-        process.on('SIGINT', function () {
-            console.log('http-server stopped');
-            server.close();
-            done();
-            process.exit();
-        });
 
-        // async support - run in background
-        if(options.runInBackground)
-            done();
-        });
-
-    
 }
 
