@@ -76,7 +76,9 @@ grunt.initConfig({
             https: {
                 cert: "cert.pem",
                 key : "key.pem"
-            }
+            },
+
+            openBrowser : false //open the browser to the URL/port when server starts.
 
         }
 
