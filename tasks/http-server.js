@@ -16,6 +16,7 @@ Task:
         runInBackground: true|false,
         cors: true,
         logFn: requestLogger,
+        openBrowser : false
 
         https: {
             cert: "<file>",
@@ -29,7 +30,9 @@ Task:
 module.exports = function(grunt) {
 
     var Server = require('http-server'),
-        _ = require('lodash');
+        _ = require('lodash'),
+        opener = require("opener");
+
 
     var requestLogger = function(req, res, error) {
         var date = (new Date).toUTCString();
@@ -45,7 +48,8 @@ module.exports = function(grunt) {
         function () {
 
         // grunt async task
-        var done = this.async();
+        var done = this.async(),
+            protocol = "http:";
 
         var defaults = {
             root: process.cwd(),
@@ -58,7 +62,8 @@ module.exports = function(grunt) {
             runInBackground: false,
             cors: false,
             logFn: requestLogger,
-            https: false
+            https: false,
+            openBrowser : false
         };
 
         var options = _.extend({}, defaults, this.data);
@@ -70,7 +75,10 @@ module.exports = function(grunt) {
                 cert: __dirname + "/../files/cert.pem",
                 key:  __dirname + "/../files/key.pem"
             };
+
+            protocol : "https:";
         }
+
 
         var server = Server.createServer(options);
 
@@ -82,6 +90,14 @@ module.exports = function(grunt) {
             console.log(
                 _.template("Server running on <%= protocol %>://<%= host %>:<%= port %>/")(msgData));
             console.log('Hit CTRL-C to stop the server');
+
+            if (options.openBrowser)
+            {
+                console.log("Opening browser")
+                opener(protocol + '//' + options.host + ':' + options.port,
+                    { command: options.openBrowser !== true ? options.openBrowser : null }
+                );
+            }
         });
 
         process.on('SIGINT', function () {
@@ -95,5 +111,7 @@ module.exports = function(grunt) {
         if(options.runInBackground)
             done();
         });
+
+    
 }
 
