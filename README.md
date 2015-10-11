@@ -78,7 +78,8 @@ grunt.initConfig({
                 key : "key.pem"
             },
 
-            openBrowser : false //open the browser to the URL/port when server starts.
+            // Tell grunt task to open the browser
+            openBrowser : false
 
         }
 
