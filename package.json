@@ -10,10 +10,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/divhide/grunt-http-server.git"
+    "url": "git://github.com/divhide/node-grunt-http-server.git"
   },
   "bugs": {
-    "url": "https://github.com/divhide/grunt-http-server/issues"
+    "url": "https://github.com/divhide/node-grunt-http-server/issues"
   },
   "engines": {
     "node": ">=0.8.0"
