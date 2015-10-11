@@ -33,7 +33,6 @@ module.exports = function(grunt) {
         _ = require('lodash'),
         opener = require("opener");
 
-
     var requestLogger = function(req, res, error) {
         var date = (new Date).toUTCString();
         if (error) {
@@ -47,10 +46,8 @@ module.exports = function(grunt) {
         'http-server',
         function () {
 
-            // grunt async task
-            var done = this.async()
-
-            var defaults = {
+            var done = this.async(),
+                defaults = {
                 root: process.cwd(),
                 port: 8282,
                 host: "127.0.0.1",
@@ -64,7 +61,7 @@ module.exports = function(grunt) {
                 https: false,
                 openBrowser : false
             };
-            
+
             var options = _.extend({}, defaults, this.data);
             options.port = typeof options.port === 'function' ? options.port() : options.port;
 
@@ -73,14 +70,15 @@ module.exports = function(grunt) {
 
             /// default module https support
             if (options.https !== null && options.https === true){
-                console.log("Https configuration setting");
                 options.https = {
                     cert: __dirname + "/../files/cert.pem",
                     key:  __dirname + "/../files/key.pem"
                 };
             }
-            else if (options.https === null || options.https === false)
-                url = "http://" + options.host + ":" + options.port;  //no https config, use regular protcol/host/port string
+            else if (options.https === null || options.https === false){
+                // no https config, use regular protcol/host/port string
+                url = "http://" + options.host + ":" + options.port;
+            }
 
             var server = Server.createServer(options);
 
@@ -89,18 +87,17 @@ module.exports = function(grunt) {
                 var msgData = _.extend({}, options, {
                     protocol: !!options.https ? "https" : "http"
                 });
+
                 console.log(
                     _.template("Server running on <%= protocol %>://<%= host %>:<%= port %>/")(msgData));
                 console.log('Hit CTRL-C to stop the server');
 
-                if (options.openBrowser)
-                {
-                    console.log("Opening browser")
-
+                if (options.openBrowser){
                     opener(url, {
                         command: options.openBrowser !== true ? options.openBrowser : null
                     });
                 }
+
             });
 
             process.on('SIGINT', function () {
@@ -111,10 +108,10 @@ module.exports = function(grunt) {
             });
 
             // async support - run in background
-            if(options.runInBackground)
+            if(options.runInBackground){
                 done();
+            }
+
         });
 
-
-}
-
+};

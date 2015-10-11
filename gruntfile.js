@@ -13,8 +13,7 @@ module.exports = function(grunt) {
             port            : function(){ return 8585; },
             https           : false,
             //proxy           : "http://someurl.com"
-            
-            openBrowser     : true
+            openBrowser     : false
         }
 
     }
