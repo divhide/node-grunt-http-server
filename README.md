@@ -79,7 +79,13 @@ grunt.initConfig({
             },
 
             // Tell grunt task to open the browser
-            openBrowser : false
+            openBrowser : false,
+
+            // customize url to serve specific pages
+            customPages: {
+                "/readme": "README.md",
+                "/readme.html": "README.html"
+            }
 
         }
 
