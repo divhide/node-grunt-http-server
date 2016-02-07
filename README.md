@@ -7,19 +7,13 @@
 
 ---
 
+# Description
+
 This grunt task provides you with an http server to serve your static files that you can
 hook in your grunt build.
 
-Usage examples:
-
-* Host your jasmine tests from grunt
-* Test your single page application static html
-* Host static JSON responses for your tests
-* Test HTTPS support on your static web pages, tests, ...
-* ...
-
-After run the grunt task (e.g. ```grunt http-server:dev```) you can open
-```http://127.0.0.1:8282/``` on your browser.
+Full documentation and examples available on:
+[divhide.com/node-grunt-http-server-1-x/](http://divhide.com/node-grunt-http-server-1-x/).
 
 ## Install
 
@@ -29,7 +23,7 @@ npm install grunt-http-server
 
 ```
 
-## Grunt Task
+## Example
 
 ```js
 
@@ -94,16 +88,11 @@ grunt.initConfig({
 
 grunt.loadNpmTasks('grunt-http-server');
 
-
 ```
 
 ## Authors
 
-**Oscar Brito**
-
-+ [github/aetheon](https://github.com/aetheon)
-+ [twitter/aetheon](http://twitter.com/aetheon)
-
++ [Oscar Brito](http://twitter.com/aetheon)
 
 ## License
 Copyright (c) 2015 Oscar Brito <aetheon@gmail.com>, contributors.
