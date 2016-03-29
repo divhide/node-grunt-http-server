@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "divhide": "2.0.1",
-    "http-server": "0.8.5",
+    "http-server": "0.9.0",
     "lodash": "4.2.X",
     "opener": "1.4.1",
     "showdown": "^1.3.0"
