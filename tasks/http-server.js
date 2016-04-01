@@ -72,8 +72,11 @@ module.exports = function(grunt) {
             var options = _.extend({}, defaults, this.data);
             options.port = typeof options.port === 'function' ? options.port() : options.port;
 
+            // get the host to use on urls
+            var urlHost = options.host != "0.0.0.0" ? options.host : "127.0.0.1";
+
             // initialize url string with default https protocol, no need for port here since using 443
-            var url = "https://" + options.host;
+            var url = "https://" + urlHost;
 
             // sanitize root
             options.root = options.root ? options.root : "./";
@@ -87,7 +90,7 @@ module.exports = function(grunt) {
             }
             else if (options.https === null || options.https === false){
                 // no https config, use regular protcol/host/port string
-                url = "http://" + options.host + ":" + options.port;
+                url = "http://" + urlHost + ":" + options.port;
             }
 
             // setup middleware
@@ -98,9 +101,6 @@ module.exports = function(grunt) {
 
             // create http-server
             var server = Server.createServer(options);
-
-            // setup CustomPages middleware
-            server;
 
             // start server
             server.listen(options.port, options.host, function() {
@@ -114,6 +114,7 @@ module.exports = function(grunt) {
                 console.log('Hit CTRL-C to stop the server');
 
                 if (options.openBrowser){
+
                     opener(url, {
                         command: options.openBrowser !== true ? options.openBrowser : null
                     });
