@@ -20,9 +20,29 @@ var CustomPagesMiddleware = function(basePath, rules){
     basePath = Divhide.Safe.string(basePath);
     rules = Divhide.Safe.object(rules);
 
+    var reducer = function(acc, regExpStr){
+        var re = Divhide.Safe.regexp(regExpStr);
+        var match = Divhide.Safe.string(rules[regExpStr]);
+        acc.push([re, match]);
+        return acc;
+    };
+    var regexpRules = Object.keys(rules)
+        .filter(Divhide.Type.isRegExpStr)
+        .reduce(reducer, []);
+
     return function(req, res){
         var url = req.url;
         var relFilePath = Divhide.Safe.string(rules[url]);
+
+        // check for possible string regexp
+        if(!relFilePath){
+            for(var i = 0, l = regexpRules.length; i < l; i++){
+                if(regexpRules[i][0].test(url)){
+                    relFilePath = regexpRules[i][1];
+                    break;
+                }
+            }
+        }
 
         // ignore if no rule is defined
         if(!relFilePath){

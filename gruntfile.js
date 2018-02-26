@@ -14,7 +14,8 @@ module.exports = function(grunt) {
                 //proxy           : "http://someurl.com"
                 openBrowser     : true,
                 customPages: {
-                    "/custom": "README.md"
+                    "/custom": "README.md",
+                    "/^\/foo/(\\w+)$/": "README.md"
                 }
             }
         }
