@@ -15,7 +15,8 @@ module.exports = function(grunt) {
                 openBrowser     : true,
                 customPages: {
                     "/custom": "README.md",
-                    "/^\/foo/(\\w+)$/": "README.md"
+                    "/^\/foo/(\\w+)$/": "README.md",
+                    "/baz/quux": "LICENCE"
                 }
             }
         }

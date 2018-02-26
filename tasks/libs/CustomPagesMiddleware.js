@@ -16,9 +16,18 @@ var _ = require("lodash"),
  *
  */
 var CustomPagesMiddleware = function(basePath, rules){
-
     basePath = Divhide.Safe.string(basePath);
     rules = Divhide.Safe.object(rules);
+
+    // workaround for https://github.com/divhide/node-divhide/issues/39
+    var RegExpFormat = /^\/.*\/([gimuy]*)$/;
+    var isRegExpStr = function (value){
+        if(!Divhide.Type.isString(value)){
+            return false;
+        }
+
+        return !!RegExpFormat.exec(value);
+    };
 
     var reducer = function(acc, regExpStr){
         var re = Divhide.Safe.regexp(regExpStr);
@@ -27,7 +36,7 @@ var CustomPagesMiddleware = function(basePath, rules){
         return acc;
     };
     var regexpRules = Object.keys(rules)
-        .filter(Divhide.Type.isRegExpStr)
+        .filter(isRegExpStr)
         .reduce(reducer, []);
 
     return function(req, res){
